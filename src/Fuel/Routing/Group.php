@@ -2,7 +2,7 @@
 
 namespace Fuel\Routing;
 
-class Collection extends Container
+class Group extends Container
 {
 	public function __construct(Router $router)
 	{

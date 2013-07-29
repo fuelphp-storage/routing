@@ -8,11 +8,21 @@ abstract class Container
 {
 	public $router;
 
+	public $prefix = '';
+
 	public $routes = array();
+
+	public function __construct($prefix = null)
+	{
+		if ($prefix)
+		{
+			$this->prefix = trim($prefix, '/').'/';
+		}
+	}
 
 	public function route($methods, $resource, $translation = null, $name = null)
 	{
-		$resource = trim($resource, '/');
+		$resource = $this->prefix.trim($resource, '/');
 
 		if (is_string($methods))
 			$methods = explode('|', strtoupper($methods));
@@ -92,7 +102,7 @@ abstract class Container
 	public function group(Closure $callback, array $filters = array())
 	{
 		// Create a new route collection with the correct parent.
-		$group = new Collection($this->router ?: $this);
+		$group = new Group($this->router ?: $this);
 
 		// Execute the callback, supplying the group
 		call_user_func($callback, $group);
