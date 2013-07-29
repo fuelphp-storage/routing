@@ -1,0 +1,11 @@
+{
+	"autoload": {
+		"psr-0": {
+			"Fuel\\Routing": "src"
+		}
+	},
+	"require": {
+		"filp/whoops": "1.*"
+	},
+	"min-stability": "dev"
+}
