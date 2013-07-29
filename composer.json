@@ -15,7 +15,7 @@
 		"filp/whoops": "dev-master"
 	},
 	"autoload": {
-		"psr-0": { "Fuel\\Routing": "src/" },
+		"psr-0": { "Fuel\\Routing": "src/" }
 	},
 	"minimum-stability": "dev"
 }
