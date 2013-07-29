@@ -112,4 +112,11 @@ abstract class Container
 
 		return $this;
 	}
+
+	public function addCollection(Collection $collection)
+	{
+		$collection->provide($this);
+
+		return $this;
+	}
 }
