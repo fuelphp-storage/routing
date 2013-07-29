@@ -1,11 +1,21 @@
 {
-	"autoload": {
-		"psr-0": {
-			"Fuel\\Routing": "src"
+	"name": "fuelphp/routing",
+	"type": "library",
+	"description": "FuelPHP Framework routing library.",
+	"homepage": "https://github.com/fuelphp/routing",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "FuelPHP Development Team",
+			"email": "team@fuelphp.com"
 		}
-	},
+	],
 	"require": {
-		"filp/whoops": "1.*"
+		"php": ">=5.4",
+		"filp/whoops": "dev-master"
 	},
-	"min-stability": "dev"
+	"autoload": {
+		"Fuel\\Routing": "src"
+	},
+	"minimum-stability": "dev"
 }
