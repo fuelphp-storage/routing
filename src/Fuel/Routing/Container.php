@@ -42,6 +42,11 @@ abstract class Container
 		return $route;
 	}
 
+	public function all($resource, $translation = null, $name = null)
+	{
+		return $this->route(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], $resource, $translation, $name);
+	}
+
 	public function get($resource, $translation = null, $name = null)
 	{
 		return $this->route(['GET'], $resource, $translation, $name);
