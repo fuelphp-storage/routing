@@ -1,6 +1,6 @@
 <?php
 /**
- * @package    Fuel\Display
+ * @package    Fuel\Routing
  * @version    2.0
  * @author     Fuel Development Team
  * @license    MIT License
