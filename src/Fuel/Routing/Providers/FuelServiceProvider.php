@@ -8,20 +8,20 @@
  * @link       http://fuelphp.com
  */
 
-namespace Fuel\Routing;
+namespace Fuel\Routing\Providers;
+
+use Fuel\Routing\Router;
 
 use Fuel\Dependency\ServiceProvider;
 
 /**
- * ServicesProvider class
- *
- * Defines the services published by this namespace to the DiC
+ * FuelPHP ServiceProvider class for this package
  *
  * @package  Fuel\Routing
  *
  * @since  1.0.0
  */
-class ServicesProvider extends ServiceProvider
+class FuelServiceProvider extends ServiceProvider
 {
 	/**
 	 * @var  array  list of service names provided by this provider
@@ -36,7 +36,7 @@ class ServicesProvider extends ServiceProvider
 		// \Fuel\Routing\Router
 		$this->register('router', function ($dic)
 		{
-			return new Router();
+			return $dic->resolve('Fuel\Routing\Router');
 		});
 	}
 }
