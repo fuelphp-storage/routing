@@ -32,11 +32,7 @@ class Route
 
 	public function name($name)
 	{
-		if ($this->name)
-		{
-			$this->unregister();
-		}
-
+		$this->unregister();
 		$this->name = $name;
 		$this->router->inject($this);
 
@@ -45,10 +41,7 @@ class Route
 
 	public function unregister()
 	{
-		if ($this->name)
-		{
-			$this->router->unregister($this);
-		}
+		$this->router->unregister($this);
 
 		return $this;
 	}

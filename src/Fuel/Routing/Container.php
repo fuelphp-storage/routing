@@ -34,7 +34,14 @@ abstract class Container
 		$router = $this->router ?: $this;
 		$route = new Route($router, $methods, $resource, $translation, $name);
 
-		$this->routes[$name] = $route;
+		if ($name)
+		{
+			$this->routes[$name] = $route;
+		}
+		else
+		{
+			$this->routes[] = $route;
+		}
 
 		return $route;
 	}
@@ -45,10 +52,10 @@ abstract class Container
 
 		if ( ! $position)
 		{
-			$position = array_search($route, $this->routes, true);
+			$position = array_search($route, $this->routes);
 		}
 
-		if ($position and isset($this->routes[$position]))
+		if (isset($this->routes[$position]))
 		{
 			unset($this->routes[$position]);
 		}
@@ -96,6 +103,13 @@ abstract class Container
 
 	public function inject(Route $route)
 	{
+		if ( ! $route->name)
+		{
+			$this->routes[] = $route;
+
+			return $this;
+		}
+
 		$this->routes[$route->name] = $route;
 
 		return $this;

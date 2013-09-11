@@ -10,7 +10,7 @@ class Parameter
 	public $route;
 	public $optional;
 
-	public function __construct(Route $route, $name, $regex, $optional = false)
+	public function __construct(Route $route = null, $name, $regex, $optional = false)
 	{
 		$this->route = $route;
 		$this->name = $name;
@@ -53,6 +53,11 @@ class Parameter
 
 	public function parameter()
 	{
+		if ( ! $this->route)
+		{
+			throw new \LogicException('Parameter chaining required a $route object to be set.');
+		}
+
 		return call_user_func_array(array($this->route, 'parameter'), func_get_args());
 	}
 }
