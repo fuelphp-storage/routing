@@ -52,7 +52,7 @@ abstract class Container
 
 		if ( ! $position)
 		{
-			$position = array_search($route, $this->routes);
+			$position = array_search($route, $this->routes, true);
 		}
 
 		if (isset($this->routes[$position]))
