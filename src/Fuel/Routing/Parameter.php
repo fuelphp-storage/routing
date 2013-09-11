@@ -8,13 +8,14 @@ class Parameter
 	public $name;
 	public $regex;
 	public $route;
-	public $optional = false;
+	public $optional;
 
-	public function __construct(Route $route, $name, $regex)
+	public function __construct(Route $route, $name, $regex, $optional = false)
 	{
 		$this->route = $route;
 		$this->name = $name;
 		$this->regex = $regex;
+		$this->optional = $optional;
 	}
 
 	public function isOptional($optional = true)

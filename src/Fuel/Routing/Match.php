@@ -42,4 +42,9 @@ class Match
 	{
 		$this->action = $action;
 	}
+
+	public function getSegments()
+	{
+		return explode('/', $this->uri);
+	}
 }

@@ -2,7 +2,9 @@
 
 namespace Fuel\Routing;
 
-class ResolveException extends \Exception
+use Exception;
+
+class ResolveException extends Exception
 {
 
 }

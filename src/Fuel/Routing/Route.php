@@ -19,7 +19,7 @@ class Route
 		$this->name = $name;
 		$this->router = $router;
 		$this->methods = $methods;
-		$this->resource = $resource;
+		$this->resource = $this->parseTypes($resource);
 
 		if (is_array($translation))
 		{
@@ -28,6 +28,46 @@ class Route
 		}
 
 		$this->translation = $translation;
+	}
+
+	public function name($name)
+	{
+		if ($this->name)
+		{
+			$this->unregister();
+		}
+
+		$this->name = $name;
+		$this->router->inject($this);
+
+		return $this;
+	}
+
+	public function unregister()
+	{
+		if ($this->name)
+		{
+			$this->router->unregister($this);
+		}
+
+		return $this;
+	}
+
+	protected function parseTypes($resource)
+	{
+		$route = $this;
+		$router = $this->router;
+
+		$filter = function ($match) use ($route, $router)
+		{
+			list (, $type, $name) = $match;
+			$type = $router->getType($type);
+			$route->parameter($name, $type['regex'], $type['optional']);
+
+			return '{'.$name.'}';
+		};
+
+		return preg_replace_callback('#\{([a-zA-Z_]+)\:([a-zA-Z_]+)\}#', $filter, $resource);
 	}
 
 	public function filters(array $filters)
@@ -58,11 +98,11 @@ class Route
 		return $this;
 	}
 
-	public function parameter($parameter, $regex = '(.*)+')
+	public function parameter($parameter, $regex = '(.*)+', $optional = false)
 	{
 		if (is_string($parameter))
 		{
-			$parameter = new Parameter($this, $parameter, $regex);
+			$parameter = new Parameter($this, $parameter, $regex, $optional);
 		}
 
 		$this->parameters[$parameter->name] = $parameter;

@@ -12,6 +12,8 @@ abstract class Container
 
 	public $routes = array();
 
+	public $types = array();
+
 	public function __construct($prefix = null)
 	{
 		if ($prefix)
@@ -25,21 +27,33 @@ abstract class Container
 		$resource = $this->prefix.trim($resource, '/');
 
 		if (is_string($methods))
+		{
 			$methods = explode('|', strtoupper($methods));
+		}
 
 		$router = $this->router ?: $this;
 		$route = new Route($router, $methods, $resource, $translation, $name);
 
-		if ($name)
-		{
-			$this->routes[$name] = $route;
-		}
-		else
-		{
-			$this->routes[] = $route;
-		}
+		$this->routes[$name] = $route;
 
 		return $route;
+	}
+
+	public function unregister(Route $route)
+	{
+		$position = $route->name;
+
+		if ( ! $position)
+		{
+			$position = array_search($route, $this->routes, true);
+		}
+
+		if ($position and isset($this->routes[$position]))
+		{
+			unset($this->routes[$position]);
+		}
+
+		return $this;
 	}
 
 	public function all($resource, $translation = null, $name = null)
@@ -82,14 +96,7 @@ abstract class Container
 
 	public function inject(Route $route)
 	{
-		if ($route->name)
-		{
-			$this->routes[$route->name] = $route;
-		}
-		else
-		{
-			$this->routes[] = $route;
-		}
+		$this->routes[$route->name] = $route;
 
 		return $this;
 	}
@@ -123,5 +130,20 @@ abstract class Container
 		$collection->provide($this);
 
 		return $this;
+	}
+
+	public function setType($type, $regex, $optional = false)
+	{
+		$this->types[$type] = compact('regex', 'optional');
+	}
+
+	public function getType($type)
+	{
+		if ( ! isset($this->types[$type]))
+		{
+			throw new \LogicException('Could not fetch undefined route param type: ['.$type.']');
+		}
+
+		return $this->types[$type];
 	}
 }
