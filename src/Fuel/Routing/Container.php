@@ -24,7 +24,10 @@ abstract class Container
 
 	public function route($methods, $resource, $translation = null, $name = null)
 	{
-		$resource = $this->prefix.trim($resource, '/');
+		if ($resource)
+		{
+			$resource = $this->prefix.trim($resource, '/');
+		}
 
 		if (is_string($methods))
 		{

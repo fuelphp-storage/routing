@@ -19,7 +19,11 @@ class Route
 		$this->name = $name;
 		$this->router = $router;
 		$this->methods = $methods;
-		$this->resource = $this->parseTypes($resource);
+
+		if ($resource)
+		{
+			$this->resource = $this->parseTypes($resource);
+		}
 
 		if (is_array($translation))
 		{
@@ -126,7 +130,7 @@ class Route
 
 	public function match($uri, $method)
 	{
-		if ($method !== '*' and ! in_array($method, $this->methods))
+		if ( ! $this->resource or $method !== '*' and ! in_array($method, $this->methods))
 		{
 			return false;
 		}
