@@ -15,6 +15,15 @@ class Router extends Container
 
 	protected $filters = array();
 
+	protected $autoFilter = null;
+
+	public function setAutoFilter($filter)
+	{
+		$this->autoFilter = $filter;
+
+		return $this;
+	}
+
 	public function filter($filter, Closure $callback)
 	{
 		$this->filters[$filter] = $callback;
@@ -112,7 +121,14 @@ class Router extends Container
 	{
 		if ($match = $route->match($uri, $method))
 		{
-			return $this->applyFilters($match, $route->filters);
+			if ($route->filters)
+			{
+				return $this->applyFilters($match, $route->filters);
+			}
+			elseif ($this->autoFilter)
+			{
+				return call_user_func($this->autoFilter, $match);
+			}
 		}
 	}
 }

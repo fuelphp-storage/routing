@@ -39,3 +39,6 @@ $router->put('users/{int:id}')->filters([
 
 var_dump($router->translate('users/123', 'PUT'));
 ```
+
+Besides defining the filter per route definition manually, you can also define an autofilter, which is something callable that will
+convert the translated route into a controller and action.
