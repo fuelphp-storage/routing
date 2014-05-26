@@ -11,11 +11,9 @@
 		}
 	],
 	"require": {
-		"php": ">=5.4",
-		"filp/whoops": "dev-master"
+		"php": ">=5.4"
 	},
 	"autoload": {
-		"psr-0": { "Fuel\\Routing": "src/" }
-	},
-	"minimum-stability": "dev"
+		"psr-4": { "Fuel\\Routing\\": "src/" }
+	}
 }
