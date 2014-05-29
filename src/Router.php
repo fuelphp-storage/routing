@@ -57,6 +57,11 @@ class Router extends Container
 		return $match;
 	}
 
+	public function applyAutoFilter(Match $match)
+	{
+		return call_user_func($this->autoFilter, $match);
+	}
+
 	public function resolveFilter($name)
 	{
 		if (isset($this->filters[$name]))
@@ -127,7 +132,7 @@ class Router extends Container
 			}
 			elseif ($this->autoFilter)
 			{
-				return call_user_func($this->autoFilter, $match);
+				return $this->applyAutoFilter($match);
 			}
 		}
 	}
