@@ -10,8 +10,6 @@
 
 namespace Fuel\Routing\Providers;
 
-use Fuel\Routing\Router;
-
 use Fuel\Dependency\ServiceProvider;
 
 /**
@@ -26,17 +24,12 @@ class FuelServiceProvider extends ServiceProvider
 	/**
 	 * @var  array  list of service names provided by this provider
 	 */
-	public $provides = array('router');
+	public $provides = array();
 
 	/**
 	 * Service provider definitions
 	 */
 	public function provide()
 	{
-		// \Fuel\Routing\Router
-		$this->register('router', function ($dic)
-		{
-			return $dic->resolve('Fuel\Routing\Router');
-		});
 	}
 }
