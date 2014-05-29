@@ -134,6 +134,7 @@ class Router extends Container
 			{
 				return $this->applyAutoFilter($match);
 			}
+			return $match;
 		}
 	}
 }
