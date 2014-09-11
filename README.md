@@ -5,7 +5,7 @@ FuelPHP Framework - Request Routing library
 
 [![Build Status](https://travis-ci.org/fuelphp/routing.svg?branch=master)](https://travis-ci.org/fuelphp/routing)
 [![Code Coverage](https://scrutinizer-ci.com/g/fuelphp/routing/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/fuelphp/routing/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fuelphp/routing/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fuelphp/routing/?branch=master)
+[![Code Quality](https://scrutinizer-ci.com/g/fuelphp/routing/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fuelphp/routing/?branch=master)
 [![HHVM Status](http://hhvm.h4cc.de/badge/fuelphp/routing.svg)](http://hhvm.h4cc.de/package/fuelphp/routing)
 
 Sample code
