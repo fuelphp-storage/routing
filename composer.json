@@ -1,6 +1,5 @@
 {
 	"name": "fuelphp/routing",
-	"type": "library",
 	"description": "FuelPHP Framework routing library.",
 	"homepage": "https://github.com/fuelphp/routing",
 	"license": "MIT",
@@ -13,7 +12,17 @@
 	"require": {
 		"php": ">=5.4"
 	},
+	"require-dev": {
+		"codeception/codeception": "~2.0"
+	},
 	"autoload": {
-		"psr-4": { "Fuel\\Routing\\": "src/" }
+		"psr-4": {
+			"Fuel\\Routing\\": "src/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.0-dev"
+		}
 	}
 }

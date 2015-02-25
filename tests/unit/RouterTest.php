@@ -2,7 +2,7 @@
 
 use Fuel\Routing\Router;
 
-class RouterTests extends PHPUnit_Framework_TestCase
+class RouterTest extends \Codeception\TestCase\Test
 {
 	public function testPlainRouting()
 	{
