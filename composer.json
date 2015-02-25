@@ -1,6 +1,6 @@
 {
 	"name": "fuelphp/routing",
-	"description": "FuelPHP Framework routing library.",
+	"description": "FuelPHP Framework routing",
 	"homepage": "https://github.com/fuelphp/routing",
 	"license": "MIT",
 	"authors": [
