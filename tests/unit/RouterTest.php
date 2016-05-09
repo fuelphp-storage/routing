@@ -8,7 +8,7 @@ class RouterTest extends \Codeception\TestCase\Test
 	{
 		$router = new Router;
 		$router->get('route', 'translation', 'name');
-		$router->get('route', 'tranation');
+		$router->get('route', 'translation');
 		$route = $router->get('name');
 		$this->assertInstanceOf('Fuel\Routing\Route', $route);
 	}

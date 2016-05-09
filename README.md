@@ -3,7 +3,6 @@
 [![Build Status](https://img.shields.io/travis/fuelphp/routing.svg?style=flat-square)](https://travis-ci.org/fuelphp/routing)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/fuelphp/routing.svg?style=flat-square)](https://scrutinizer-ci.com/g/fuelphp/routing)
 [![Quality Score](https://img.shields.io/scrutinizer/g/fuelphp/routing.svg?style=flat-square)](https://scrutinizer-ci.com/g/fuelphp/routing)
-[![HHVM Status](https://img.shields.io/hhvm/fuelphp/routing.svg?style=flat-square)](http://hhvm.h4cc.de/package/fuelphp/routing)
 
 **FuelPHP Framework routing.**
 
